@@ -116,6 +116,7 @@ footer a {
     width: 100px;
     border-radius: 0px;
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .question-card {
@@ -132,7 +133,7 @@ footer a {
 }
 
 .question-wrapper {
-    height: 500px;
+    min-height: 500px;
     overflow: hidden;
 }
 
