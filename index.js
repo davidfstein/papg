@@ -12,13 +12,16 @@ const scrollToID = (id) => {
     );
 }
 
-const highlightDiv = (id) => {
-    console.log(id)
+const focusDiv = (el) => {
     r=236;
     g=238;
     b=239;
     a=.4;
-    document.getElementById(id).parentElement.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ',' + a + ')';
+    el.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ',' + a + ')';
+}
+
+const unfocusDiv = (el) => {
+    el.style.backgroundColor = 'rgba(255,255,255,0)';
 }
 
 const goToNextQuestion = () => {
@@ -36,10 +39,8 @@ const goToNextQuestion = () => {
         }
     });
     scrollToID(next.id);
-    highlightDiv(next.id);
+    // highlightDiv(next.parentElement);
 }
-
-// object.addEventListener("submit", myScript);
 
 const indexOfMax = (arr) => {
     if (arr.length === 0) {
@@ -58,3 +59,14 @@ const indexOfMax = (arr) => {
 
     return maxIndex;
 }
+
+const vcfinput = document.getElementById('vcfUpload')
+vcfinput.onchange = (event) => {
+    const fileList = vcfinput.files;
+    console.log(fileList) 
+ }
+
+ Array.from(document.querySelectorAll('.question-wrapper')).forEach(q => {
+     q.onmouseenter = (q) => {focusDiv(q.srcElement)};
+     q.onmouseleave = (q) => {unfocusDiv(q.srcElement)};
+ })

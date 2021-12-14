@@ -28,7 +28,7 @@ body {
 }
 
 .hero {
-    height: 600px;
+    height: 100vh;
 }
 
 .hero a {
@@ -135,6 +135,11 @@ footer a {
 .question-wrapper {
     min-height: 500px;
     overflow: hidden;
+    -webkit-transition: background-color 1s ease-in-out;
+    -moz-transition: background-color 1s ease-in-out;
+    -o-transition: background-color 1s ease-in-out;
+    -ms-transition: background-color 1s ease-in-out;
+    transition: background-color 1s ease-in-out;
 }
 
 .footer-info {
