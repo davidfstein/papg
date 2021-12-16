@@ -15,6 +15,13 @@ const SNP_TRAIT = {
                   'rs941898']
 }
 ncbi_url = "https://www.ncbi.nlm.nih.gov/snp/"
+const snpToTrait = {
+    'rs4341': 'positively correlated with athletic performance',
+    'rs12594956': 'positively correlated with athletic performance',
+    'rs2306604': 'homozygous genotype negatively correlated with athletic performance',
+    'rs324420': 'homozygous genotype negatively correlated with athletic performance',
+    'rs2576037': 'Related to fluency and originality component scores of UUT (divergent thinking)'
+}
 
 
 const resize_ob = new ResizeObserver(function(entries) {
@@ -313,44 +320,44 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    if (score >= 11) type = 'a divergent thinker'
-    else if (score >= 9 && score <= 10) type = 'a convergent and divergent thinker'
-    else type = 'a convergent thinker'
-    document.getElementById('q4ResultClass').innerText = type;
-    const snpString = SNP_TRAIT['problem'].map(snp => {
+    if (score > 9) type = 'a Warrior'
+    else if (score >= 8 && score <= 9) type = 'neither a warrior or worrier'
+    else type = 'a Worrier'
+    document.getElementById('q5ResultClass').innerText = type;
+    const snpString = SNP_TRAIT['warrior'].map(snp => {
         return `<a href=${ncbi_url + snp}>${snp}</a>`
     }).join(', ')
-    document.getElementById('q4Variants').innerHTML = snpString;
+    document.getElementById('q5Variants').innerHTML = snpString;
     const homoSNPs = [];
-    SNP_TRAIT['problem'].forEach(snp => {
+    SNP_TRAIT['warrior'].forEach(snp => {
         console.log(snp, SNP_LIST[snp])
         if (SNP_LIST[snp] == 2) homoSNPs.push(snp) 
     })
     const heteroSNPs = [];
-    SNP_TRAIT['problem'].forEach(snp => {
+    SNP_TRAIT['warrior'].forEach(snp => {
         if (SNP_LIST[snp] == 1) heteroSNPs.push(snp) 
     })
     console.log(homoSNPs, heteroSNPs)
     if (homoSNPs.length !== 0) {
-        const homoel = document.getElementById('q4Homo');
+        const homoel = document.getElementById('q5Homo');
         homoel.style.visibility = 'visible';
-        const homovarel = document.getElementById('q4HomoVar');
+        const homovarel = document.getElementById('q5HomoVar');
         const homoSNPString = homoSNPs.map(snp => {
             return `<a href=${ncbi_url + snp}>${snp}</a>`
         }).join(', ')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
-        const heteroel = document.getElementById('q4Hetero');
+        const heteroel = document.getElementById('q5Hetero');
         heteroel.style.visibility = 'visible';
-        const heterovarel = document.getElementById('q4HeteroVar');
+        const heterovarel = document.getElementById('q5HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
             return `<a href=${ncbi_url + snp}>${snp}</a>`
         }).join(', ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
-        document.getElementById('q4NothingFound').style.visibility = 'visible';
+        document.getElementById('q5NothingFound').style.visibility = 'visible';
     }
  }
 
@@ -361,7 +368,45 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    console.log(score)
+    if (score >= 8) type = 'very conscientious'
+    else if (score >= 4 && score <= 7) type = 'moderately conscientious'
+    else type = 'not very conscientious'
+    document.getElementById('q6ResultClass').innerText = type;
+    const snpString = SNP_TRAIT['conscientiousness'].map(snp => {
+        return `<a href=${ncbi_url + snp}>${snp}</a>`
+    }).join(', ')
+    document.getElementById('q6Variants').innerHTML = snpString;
+    const homoSNPs = [];
+    SNP_TRAIT['conscientiousness'].forEach(snp => {
+        console.log(snp, SNP_LIST[snp])
+        if (SNP_LIST[snp] == 2) homoSNPs.push(snp) 
+    })
+    const heteroSNPs = [];
+    SNP_TRAIT['conscientiousness'].forEach(snp => {
+        if (SNP_LIST[snp] == 1) heteroSNPs.push(snp) 
+    })
+    console.log(homoSNPs, heteroSNPs)
+    if (homoSNPs.length !== 0) {
+        const homoel = document.getElementById('q6Homo');
+        homoel.style.visibility = 'visible';
+        const homovarel = document.getElementById('q6HomoVar');
+        const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        homovarel.innerHTML = homoSNPString; 
+    } 
+    if (heteroSNPs.length !== 0) {
+        const heteroel = document.getElementById('q6Hetero');
+        heteroel.style.visibility = 'visible';
+        const heterovarel = document.getElementById('q6HeteroVar');
+        const heteroSNPString = heteroSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        heterovarel.innerHTML = heteroSNPString; 
+    } 
+    if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
+        document.getElementById('q6NothingFound').style.visibility = 'visible';
+    }
  }
 
  document.getElementById('hostile-submit').onclick = (event) => {
@@ -371,7 +416,44 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    console.log(score)
+    if (score >= 4) type = 'a bit hostile'
+    else type = 'not very hostile'
+    document.getElementById('q7ResultClass').innerText = type;
+    const snpString = SNP_TRAIT['hostility'].map(snp => {
+        return `<a href=${ncbi_url + snp}>${snp}</a>`
+    }).join(', ')
+    document.getElementById('q7Variants').innerHTML = snpString;
+    const homoSNPs = [];
+    SNP_TRAIT['hostility'].forEach(snp => {
+        console.log(snp, SNP_LIST[snp])
+        if (SNP_LIST[snp] == 2) homoSNPs.push(snp) 
+    })
+    const heteroSNPs = [];
+    SNP_TRAIT['hostility'].forEach(snp => {
+        if (SNP_LIST[snp] == 1) heteroSNPs.push(snp) 
+    })
+    console.log(homoSNPs, heteroSNPs)
+    if (homoSNPs.length !== 0) {
+        const homoel = document.getElementById('q7Homo');
+        homoel.style.visibility = 'visible';
+        const homovarel = document.getElementById('q7HomoVar');
+        const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        homovarel.innerHTML = homoSNPString; 
+    } 
+    if (heteroSNPs.length !== 0) {
+        const heteroel = document.getElementById('q7Hetero');
+        heteroel.style.visibility = 'visible';
+        const heterovarel = document.getElementById('q7HeteroVar');
+        const heteroSNPString = heteroSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        heterovarel.innerHTML = heteroSNPString; 
+    } 
+    if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
+        document.getElementById('q7NothingFound').style.visibility = 'visible';
+    }
  }
 
  document.getElementById('gambling-submit').onclick = (event) => {
@@ -381,7 +463,44 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    console.log(score)
+    if (score > 6) type = 'a gambler'
+    else type = 'not a gambler'
+    document.getElementById('q8ResultClass').innerText = type;
+    const snpString = SNP_TRAIT['gambling'].map(snp => {
+        return `<a href=${ncbi_url + snp}>${snp}</a>`
+    }).join(', ')
+    document.getElementById('q8Variants').innerHTML = snpString;
+    const homoSNPs = [];
+    SNP_TRAIT['gambling'].forEach(snp => {
+        console.log(snp, SNP_LIST[snp])
+        if (SNP_LIST[snp] == 2) homoSNPs.push(snp) 
+    })
+    const heteroSNPs = [];
+    SNP_TRAIT['gambling'].forEach(snp => {
+        if (SNP_LIST[snp] == 1) heteroSNPs.push(snp) 
+    })
+    console.log(homoSNPs, heteroSNPs)
+    if (homoSNPs.length !== 0) {
+        const homoel = document.getElementById('q8Homo');
+        homoel.style.visibility = 'visible';
+        const homovarel = document.getElementById('q8HomoVar');
+        const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        homovarel.innerHTML = homoSNPString; 
+    } 
+    if (heteroSNPs.length !== 0) {
+        const heteroel = document.getElementById('q8Hetero');
+        heteroel.style.visibility = 'visible';
+        const heterovarel = document.getElementById('q8HeteroVar');
+        const heteroSNPString = heteroSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        heterovarel.innerHTML = heteroSNPString; 
+    } 
+    if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
+        document.getElementById('q8NothingFound').style.visibility = 'visible';
+    }
  }
 
  document.getElementById('pol-submit').onclick = (event) => {
@@ -391,5 +510,43 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-    console.log(score)
+    if (score > 7) type = 'a Conservative'
+    else if (score >= 4 && score <= 7) type = 'a Moderate'
+    else type = 'a Liberal'
+    document.getElementById('q9ResultClass').innerText = type;
+    const snpString = SNP_TRAIT['politics'].map(snp => {
+        return `<a href=${ncbi_url + snp}>${snp}</a>`
+    }).join(', ')
+    document.getElementById('q9Variants').innerHTML = snpString;
+    const homoSNPs = [];
+    SNP_TRAIT['politics'].forEach(snp => {
+        console.log(snp, SNP_LIST[snp])
+        if (SNP_LIST[snp] == 2) homoSNPs.push(snp) 
+    })
+    const heteroSNPs = [];
+    SNP_TRAIT['politics'].forEach(snp => {
+        if (SNP_LIST[snp] == 1) heteroSNPs.push(snp) 
+    })
+    console.log(homoSNPs, heteroSNPs)
+    if (homoSNPs.length !== 0) {
+        const homoel = document.getElementById('q9Homo');
+        homoel.style.visibility = 'visible';
+        const homovarel = document.getElementById('q9HomoVar');
+        const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        homovarel.innerHTML = homoSNPString; 
+    } 
+    if (heteroSNPs.length !== 0) {
+        const heteroel = document.getElementById('q9Hetero');
+        heteroel.style.visibility = 'visible';
+        const heterovarel = document.getElementById('q9HeteroVar');
+        const heteroSNPString = heteroSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>`
+        }).join(', ')
+        heterovarel.innerHTML = heteroSNPString; 
+    } 
+    if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
+        document.getElementById('q9NothingFound').style.visibility = 'visible';
+    }
  }
