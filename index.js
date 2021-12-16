@@ -20,7 +20,40 @@ const snpToTrait = {
     'rs12594956': 'positively correlated with athletic performance',
     'rs2306604': 'homozygous genotype negatively correlated with athletic performance',
     'rs324420': 'homozygous genotype negatively correlated with athletic performance',
-    'rs2576037': 'Related to fluency and originality component scores of UUT (divergent thinking)'
+    'rs2576037': 'related to fluency and originality component scores of UUT (divergent thinking)',
+    'rs5993883': 'homozygous genotype associated with divergent thinking',
+    'rs362584': 'homozygous genotype associated with divergent thinking',
+    'rs5759037': 'associated with greater extraversion',
+    'rs2164273': 'associated with greater extraversion',
+    'rs1426371': 'associated with less extraversion',
+    'rs7498702': 'associated with less extraversion',
+    'rs6481128': 'associated with greater extraversion',
+    'rs6981523': 'associated with greater neuroticism',
+    'rs9611519': 'associated with greater neuroticism',
+    'rs3814424': 'associated with lower conscientiousness',
+    'rs150812083': 'associated with early sleepers and risers',
+    'rs139315125': 'associated with early sleepers and risers',
+    'rs4680': 'associated with an advantage in memory and attention tasks (worrier strategy); associated with anxiety',
+    'rs1402494': 'associated with higher gambling frequency',
+    'rs10952668': 'associated with conservatism',
+    'rs802047': 'associated with cynicism (hostility)',
+    'rs802028': 'associated with cynicism (hostility)',
+    'rs802030': 'associated with cynicism (hostility)',
+    'rs802026': 'associated with cynicism (hostility)',
+    'rs802036': 'associated with cynicism (hostility)',
+    'rs802025': 'associated with cynicism (hostility)',
+    'rs802024': 'associated with cynicism (hostility)',
+    'rs802032': 'associated with cynicism (hostility)',
+    'rs802049': 'associated with cynicism (hostility)',
+    'rs802051': 'associated with cynicism (hostility)',
+    'rs12936442': 'associated with cynicism and paranoia (hostility)',
+    'rs894664': 'associated with cynicism and paranoia (hostility)',
+    'rs6502671': 'associated with cynicism and paranoia (hostility)',
+    'rs6502671': 'associated with cynicism and paranoia (hostility)',
+    'rs7510759': 'associated with cynicism and paranoia (hostility)',
+    'rs7510924': 'associated with cynicism and paranoia (hostility)',
+    'rs8136107': 'associated with cynicism and paranoia (hostility)',
+    'rs7290560': 'associated with cynicism and paranoia (hostility)',
 }
 
 
@@ -151,8 +184,8 @@ vcfinput.onchange = async (event) => {
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q1HomoVar');
         const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -160,8 +193,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q1HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -198,9 +231,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q2Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q2HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -208,8 +241,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q2HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -246,9 +279,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q3Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q3HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -256,8 +289,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q3HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -294,9 +327,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q4Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q4HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -304,8 +337,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q4HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -342,9 +375,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q5Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q5HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -352,8 +385,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q5HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -390,9 +423,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q6Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q6HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -400,8 +433,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q6HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -437,9 +470,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q7Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q7HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -447,8 +480,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q7HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -484,9 +517,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q8Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q8HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -494,8 +527,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q8HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
@@ -532,9 +565,9 @@ vcfinput.onchange = async (event) => {
         const homoel = document.getElementById('q9Homo');
         homoel.style.visibility = 'visible';
         const homovarel = document.getElementById('q9HomoVar');
-        const homoSNPString = homoSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+         const homoSNPString = homoSNPs.map(snp => {
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br />')
         homovarel.innerHTML = homoSNPString; 
     } 
     if (heteroSNPs.length !== 0) {
@@ -542,8 +575,8 @@ vcfinput.onchange = async (event) => {
         heteroel.style.visibility = 'visible';
         const heterovarel = document.getElementById('q9HeteroVar');
         const heteroSNPString = heteroSNPs.map(snp => {
-            return `<a href=${ncbi_url + snp}>${snp}</a>`
-        }).join(', ')
+            return `<a href=${ncbi_url + snp}>${snp}</a>: ${snpToTrait[snp]}`
+        }).join('<br /> ')
         heterovarel.innerHTML = heteroSNPString; 
     } 
     if (homoSNPs.length === 0 && heteroSNPs.length === 0) {
