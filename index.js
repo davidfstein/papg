@@ -138,7 +138,7 @@ vcfinput.onchange = async (event) => {
     const infoel = document.getElementById('result-info');
     infoel.innerText = "Preparing your results..."
     const fileList = vcfinput.files;
-    const results = await fetch('http://127.0.0.1:5000/api/parsevcf',
+    const results = await fetch('https://papg-back.herokuapp.com/api/parsevcf',
         {
                 method:'POST',
                 body: fileList[0]
