@@ -47,14 +47,21 @@ const snpToTrait = {
     'rs802032': 'associated with cynicism (hostility)',
     'rs802049': 'associated with cynicism (hostility)',
     'rs802051': 'associated with cynicism (hostility)',
+    'rs6502671': 'associated with cynicism and paranoia (hostility)',
+    'rs8136107': 'associated with cynicism and paranoia (hostility)',
     'rs12936442': 'associated with cynicism and paranoia (hostility)',
     'rs894664': 'associated with cynicism and paranoia (hostility)',
-    'rs6502671': 'associated with cynicism and paranoia (hostility)',
-    'rs6502671': 'associated with cynicism and paranoia (hostility)',
     'rs7510759': 'associated with cynicism and paranoia (hostility)',
     'rs7510924': 'associated with cynicism and paranoia (hostility)',
-    'rs8136107': 'associated with cynicism and paranoia (hostility)',
     'rs7290560': 'associated with cynicism and paranoia (hostility)',
+    'rs7216028': 'associated with cynicism and paranoia (hostility)',
+    'rs3783337': 'associated with cynicism and paranoia (hostility)',
+    'rs7158754': 'associated with cynicism and paranoia (hostility)',
+    'rs3783332': 'associated with cynicism and paranoia (hostility)',
+    'rs2181102': 'associated with cynicism and paranoia (hostility)',
+    'rs7159195': 'associated with cynicism and paranoia (hostility)',
+    'rs11160570': 'associated with cynicism and paranoia (hostility)',
+    'rs941898': 'associated with cynicism and paranoia (hostility)'
 }
 
 
