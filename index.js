@@ -162,6 +162,7 @@ vcfinput.onchange = async (event) => {
     const score = subQs.map(q => formData.getAll(q))
                        .flat(Infinity)
                        .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    console.log(score)
     let type = null;
     if (score >= 8) type = 'Very athletic'
     else if (score >= 4 && score <= 7) type = 'Moderately athletic'
