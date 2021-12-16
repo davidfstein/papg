@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Phenotizer</title>
+    <title>Me, myself, and I</title>
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -24,19 +24,20 @@
       <a class='text-decoration-none jump-arrow' href='javascript: goToNextQuestion();'><i class="fas fa-angle-down"></i></a>
       <div class="jumbotron jumbotron-fluid hero">
         <div class='container d-flex flex-column justify-content-center align-items-center h-100 position-relative'>
-          <a class='display-4 text-decoration-none hero-a mb-2' href='#'>Phenotizer<span class='underline underline--dna'></span></a>
+          <a class='display-4 text-decoration-none hero-a mb-2' href='#'>Me, myself, and I<span class='underline underline--dna'></span></a>
           <form>
             <div class="form-group">
               <label class="d-block" for="vcfUpload">Upload your VCF to get started</label>
               <input type="file" class="form-control-file" id="vcfUpload">
             </div>
+            <div id='result-info'></div>
           </form>
         </div>
       </div>
 
       <div class='question-wrapper'>
         <div id='question1' class='container question'>
-          <form class="form-group">
+          <form class="form-group" id='athletic-form'>
             <legend class="mt-4 h2">Athletic Performance</legend>
             <legend class="mt-4 h6">
               How much do you enjoy exercising (e.g. running, biking, lifting weights)?
@@ -44,31 +45,31 @@
             <div class="row">
               <div class="col-sm-2">
                   <label class="radio-inline">Not at all</label>
-                  <input class="d-block" value="Not at all" type="checkbox" />
+                  <input class="d-block" name="Q11" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                   <label class="radio-inline">
                      Not Much
                   </label>
-                  <input class="d-block" value="Not much" type="checkbox" />
+                  <input class="d-block" name="Q11" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    Neutral
                 </label>
-                <input class="d-block" value="Neutral" type="checkbox" />
+                <input class="d-block" name="Q11" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    Somewhat
                 </label>
-                <input class="d-block" value="Somewhat" type="checkbox" />
+                <input class="d-block" name="Q11" value="1" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                     Very Much
                 </label>
-                <input class="d-block" value="Very much" type="checkbox" />
+                <input class="d-block" name="Q11" value="1" type="radio" />
               </div>
             </div>
             <legend class="mt-4 h6">
@@ -76,27 +77,27 @@
             </legend>
             <div>
               <label class="form-check-label col-sm-12">  
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox1" value="option1" >
+                <input type="radio" name="Q12" class="form-check-input" value="1" >
                 Team Sports
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox2" value="option2" >
+                <input type="radio" name="Q12" class="form-check-input" value="2" >
                 Jogging
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox3" value="option3" >
+                <input type="radio" name="Q12" class="form-check-input" value="3" >
                 Biking
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox4" value="option4" >
+                <input type="radio" name="Q12" class="form-check-input" value="4" >
                 Swimming
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox5" value="option5" >
+                <input type="radio" name="Q12" class="form-check-input" value="5" >
                 Weight Lifting
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-2Checkbox6" value="option6" >
+                <input type="radio" name="Q12" class="form-check-input" value="6" >
                 I do not enjoy exercising
               </label>
             </div>
@@ -105,19 +106,19 @@
             </legend>
             <div>
               <label class="form-check-label col-sm-12">  
-                <input type="checkbox" class="form-check-input" id="q1-3Checkbox1" value="option1" >
+                <input type="radio" name="Q13" class="form-check-input" value="3" >
                 I wouldn't need to train at all.
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-3Checkbox2" value="option2" >
+                <input type="radio" name="Q13" class="form-check-input" value="2" >
                 I would need to train a little.
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-3Checkbox3" value="option3" >
+                <input type="radio" name="Q13" class="form-check-input" value="1" >
                 I would need to train a moderate amount.
               </label>
               <label class="form-check-label col-sm-12">
-                <input type="checkbox" class="form-check-input" id="q1-3Checkbox4" value="option4" >
+                <input type="radio" name="Q13" class="form-check-input" value="0" >
                 I would need to train a lot.
               </label>
             </div>
@@ -127,31 +128,31 @@
             <div class="row">
               <div class="col-sm-2">
                   <label class="radio-inline">More than 45 minutes</label>
-                  <input class="d-block" value="More than 45 minutes" type="checkbox" />
+                  <input class="d-block" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                   <label class="radio-inline">
                      45 minutes
                   </label>
-                  <input class="d-block" value="45 minutes" type="checkbox" />
+                  <input class="d-block" name="Q14" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    30 minutes
                 </label>
-                <input class="d-block" value="30 minutes" type="checkbox" />
+                <input class="d-block" name="Q14" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    15 minutes
                 </label>
-                <input class="d-block" value="15 minutes" type="checkbox" />
+                <input class="d-block" name="Q14" value="1" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                   Less than 15 minutes
                 </label>
-                <input class="d-block" value="Less than 15 minutes" type="checkbox" />
+                <input class="d-block" name="Q14" value="2" type="radio" />
               </div>
             </div>
             <legend class="mt-4 h6">
@@ -160,36 +161,53 @@
             <div class="row">
               <div class="col-sm-2">
                   <label class="radio-inline">Not very athletic</label>
-                  <input class="d-block" value="Not very athletic" type="checkbox" />
+                  <input class="d-block" name="Q15" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                   <label class="radio-inline">
                      Somewhat athletic
                   </label>
-                  <input class="d-block" value="Somewhat athletic" type="checkbox" />
+                  <input class="d-block" name="Q15" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    Neutral
                 </label>
-                <input class="d-block" value="Neutral" type="checkbox" />
+                <input class="d-block" name="Q15" value="0" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                    Athletic
                 </label>
-                <input class="d-block" value="Athletic" type="checkbox" />
+                <input class="d-block" name="Q15" value="1" type="radio" />
               </div>
               <div class="col-sm-2">
                 <label class="radio-inline">
                   Very Athletic
                 </label>
-                <input class="d-block" value="Very Athletic" type="checkbox" />
+                <input class="d-block" name="Q15" value="2" type="radio" />
               </div>
+            </div>
+            <legend class="mt-4 h6">
+              Do you prefer light to moderate exercise over a long period of time over short, intense workouts?
+            </legend>
+            <div>
+              <label class="form-check-label col-sm-12">  
+                <input type="radio" name="Q16" class="form-check-input" value="1" >
+                Short, intense
+              </label>
+              <label class="form-check-label col-sm-12">
+                <input type="radio" name="Q16" class="form-check-input" value="1" >
+                Long period
+              </label>
+              <label class="form-check-label col-sm-12">
+                <input type="radio" name="Q16" class="form-check-input" value="0" >
+                I do not enjoy exercising
+              </label>
             </div>
           </form>
           <button class="btn btn-primary question-submit" data-toggle="collapse" data-target="#collapseQ1" 
-                      aria-expanded="false" aria-controls="collapseQ1">
+                      aria-expanded="false" aria-controls="collapseQ1" id='athletic-submit'>
             Submit
           </button>
         </div>
@@ -203,21 +221,21 @@
 
       <div class='question-wrapper'>
         <div id='question2' class='container question'>
-          <form class="form-group">
-            <legend class="mt-4 h2">Extraversion</legend>
+          <form class="form-group" id='social-form'>
+            <legend class="mt-4 h2">Social Attitude</legend>
             <legend class="mt-4 h6">
               Which do you find more energizing?
             </legend>
             <div>
               <label class="radio">
-                <input value="party" type="radio" />
+                <input value="1" name='Q21' type="radio" />
                 Going to a party with friends.
               </label>
             </div>
             <div>
               <label class="radio">
-                  <input value="reading" type="radio" />
-                  Staying in and reading.
+                <input value="0" name='Q21' type="radio" />
+                Staying in and reading.
               </label>
             </div>
             <legend class="mt-4 h6">
@@ -225,13 +243,13 @@
             </legend>
             <div>
               <label class="radio">
-                <input value="center" type="radio" />
+                <input value="1" name='Q22' type="radio" />
                 The center of attention
               </label>
             </div>
             <div>
               <label class="radio">
-                  <input value="background" type="radio" />
+                  <input value="0" name='Q22' type="radio" />
                   In the background
               </label>
             </div>
@@ -240,13 +258,13 @@
             </legend>
             <div>
               <label class="radio">
-                <input value="listener" type="radio" />
+                <input value="0" name='Q23' type="radio" />
                 Listener
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="talker" type="radio" />
+                <input value="1" name='Q23' type="radio" />
                 Talker
               </label>
             </div>
@@ -255,19 +273,19 @@
             </legend>
             <div>
               <label class="radio">
-                <input value="many" type="radio" />
+                <input value="2" name='Q24' type="radio" />
                 Talk to as many people as you can
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="few" type="radio" />
+                <input value="1" name='Q24' type="radio" />
                 Talk to only a few people
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="yourself" type="radio" />
+                <input value="0" name='Q24' type="radio" />
                 Keep to yourself
               </label>
             </div>
@@ -276,31 +294,31 @@
             </legend>
             <div>
               <label class="radio">
-                <input value="very-comfortable" type="radio" />
+                <input value="3" name='Q25' type="radio" />
                 Very comfortable
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="moderately-comfortable" type="radio" />
+                <input value="2" name='Q25' type="radio" />
                 Moderately comfortable
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="neither" type="radio" />
+                <input value="1" name='Q25' type="radio" />
                 Neither comfortable or uncomfortable
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="moderately-uncomfortable" type="radio" />
+                <input value="0" name='Q25' type="radio" />
                 Moderately uncomfortable
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="very-uncomfortable" type="radio" />
+                <input value="0" name='Q25' type="radio" />
                 Very uncomfortable
               </label>
             </div>
@@ -309,19 +327,19 @@
             </legend>
             <div>
               <label class="radio">
-                <input value="yes" type="radio" />
+                <input value="1" name='Q26' type="radio" />
                 Yes
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="neither" type="radio" />
+                <input value="0" name='Q26' type="radio" />
                 Neither
               </label>
             </div>
             <div>
               <label class="radio">
-                <input value="no" type="radio" />
+                <input value="0" name='Q26' type="radio" />
                 No
               </label>
             </div>
@@ -330,49 +348,49 @@
             </legend>
             <div>
               <label>
-                <input value="Talkative" type="checkbox" />
+                <input value="2" name='Q27' type="checkbox" />
                  Talkative
               </label>
             </div>
             <div>
               <label>
-                <input value="Energetic" type="checkbox" />
+                <input value="2" name='Q27' type="checkbox" />
                  Energetic
               </label>
             </div>
             <div>
               <label>
-                <input value="Friendly" type="checkbox" />
+                <input value="1" name='Q27' type="checkbox" />
                  Friendly
               </label>
             </div>
             <div>
               <label>
-                <input value="Outgoing" type="checkbox" />
+                <input value="2" name='Q27' type="checkbox" />
                  Outgoing
               </label>
             </div>
             <div>
               <label>
-                <input value="Thoughtful" type="checkbox" />
+                <input value="0" name='Q27' type="checkbox" />
                  Thoughtful
               </label>
             </div>
             <div>
               <label>
-                <input value="Quiet" type="checkbox" />
+                <input value="0" name='Q27' type="checkbox" />
                  Quiet
               </label>
             </div>
             <div>
               <label>
-                <input value="Reserved" type="checkbox" />
+                <input value="0" name='Q27' type="checkbox" />
                  Reserved
               </label>
             </div>
           </form>
           <button class="btn btn-primary question-submit" data-toggle="collapse" data-target="#collapseQ2" 
-                aria-expanded="false" aria-controls="collapseQ3">Submit
+                aria-expanded="false" aria-controls="collapseQ3" id="social-submit">Submit
           </button>
         </div>
         <div class="collapse question-collapse" id="collapseQ2">
@@ -385,29 +403,146 @@
 
       <div class='question-wrapper'>
         <div id='question3' class='container question'>
-          <form class="form-group">
-            <legend class="mt-4 h2">Question 3</legend>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                Option one is this and that—be sure to include why it's great
+          <form class="form-group" id='time-form'>
+            <legend class="mt-4 h2">Night Owl or Day Bird</legend>
+            <legend class="mt-4 h6">
+              What time of day do you tend to have the most energy?
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="4" name='Q31' type="radio" />
+                 Early Morning
               </label>
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                Option two can be something else and selecting it will deselect option one
+            <div>
+              <label class="radio">
+                <input value="3" name='Q31' type="radio" />
+                Late Morning
               </label>
             </div>
-            <div class="form-check disabled">
-              <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
-                Option three is disabled
+            <div>
+              <label class="radio">
+                <input value="1" name='Q31' type="radio" />
+                Early Afternoon
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q31' type="radio" />
+                Evening
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q31' type="radio" />
+                Late night
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              What time of day do you tend to have the least energy?
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q32' type="radio" />
+                 Early Morning
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q32' type="radio" />
+                Late Morning
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q32' type="radio" />
+                Early Afternoon
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="3" name='Q32' type="radio" />
+                Evening
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="4" name='Q32' type="radio" />
+                Late night
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              What time do you normally go to sleep at night?
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="4" name='Q33' type="radio" />
+                 Before 8PM
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="3" name='Q33' type="radio" />
+                Between 8PM and 10PM
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q33' type="radio" />
+                Between 10PM and midnight
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q33' type="radio" />
+                After midnight
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              Without an alarm clock, what time would you wake up? 
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="4" name='Q34' type="radio" />
+                 Before 6AM
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q34' type="radio" />
+                Between 6AM and 10AM
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q34' type="radio" />
+                Between 10AM and noon
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q34' type="radio" />
+                After noon
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              Do you require caffeine to wake up in the morning 
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q35' type="radio" />
+                 Yes
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q35' type="radio" />
+                 No
               </label>
             </div>
           </form>
           <button class="btn btn-primary question-submit" data-toggle="collapse" data-target="#collapseQ3" 
-                aria-expanded="false" aria-controls="collapseQ3">Submit
+                aria-expanded="false" aria-controls="collapseQ3" id='time-submit'>Submit
           </button>
         </div>
         <div class="collapse question-collapse" id="collapseQ3">
@@ -417,6 +552,500 @@
           </div>
         </div>
       </div>
+
+      <div class='question-wrapper'>
+        <div id='question4' class='container question'>
+          <form class="form-group" id='problem-form'>
+            <legend class="mt-4 h2">Problem-solving Strategy</legend>
+            <legend class="mt-4 h6">
+              How creative do you think you are?
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q41" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q41" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q41" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q41" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very
+                </label>
+                <input class="d-block" name="Q41" value="2" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              Which of the below activities do you enjoy doing most in your in your spare time (choose 3 favorite)?
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q42' type="checkbox" />
+                 Writing
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q42' type="checkbox" />
+                 Listening to or playing music
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q42' type="checkbox" />
+                Drawing or painting
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q42' type="checkbox" />
+                Knitting
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q42' type="checkbox" />
+                Cooking
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q42' type="checkbox" />
+                Practicing photography or videography
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q42' type="checkbox" />
+                Doing a jigsaw puzzle
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q42' type="checkbox" />
+                Doing a crossword puzzle
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q42' type="checkbox" />
+                Playing a boardgame
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q42' type="checkbox" />
+                Nothing
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              Which subjects did you enjoy most in school?
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q43' type="checkbox" />
+                 English
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q43' type="checkbox" />
+                 History
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q43' type="checkbox" />
+                Social Studies / Civics
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q43' type="checkbox" />
+                Math
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q43' type="checkbox" />
+                Science
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="5" name='Q43' type="checkbox" />
+                Gym
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="2" name='Q43' type="checkbox" />
+                Art
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q43' type="checkbox" />
+                Foreign Language
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I tend to think outside of the box to find a solution.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q44" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q44" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q44" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q44" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q44" value="2" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I tend to apply logic and reasoning to find a solution.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q45" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q45" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q45" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q45" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q45" value="0" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: It is easier for me to achieve a goal when I am allowed the freedom to develop my own plan.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q46" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q46" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q46" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q46" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q46" value="2" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: It is easier for me to achieve a goal when I am given a clear set of rules, parameters, or instructions.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q47" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q47" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q47" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q47" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q47" value="0" type="radio" />
+              </div>
+            </div>
+          </form>
+          <button class="btn btn-primary question-submit" data-toggle="collapse" data-target="#collapseQ4" 
+          aria-expanded="false" aria-controls="collapseQ4" id='problem-submit'>Submit
+          </button>
+        </div>
+        <div class="collapse question-collapse" id="collapseQ4">
+          <div class="container card card-body question-card">
+            You selected x, y, and z. SNPs a, b, and c have been linked to d, e, and f phenotypes. <br \>
+            Check out these articles for more information!
+          </div>
+        </div>
+      </div>
+
+      <div class='question-wrapper'>
+        <div id='question5' class='container question'>
+          <form class="form-group" id='stress-form'>
+            <legend class="mt-4 h2">Warrior vs. Worrier</legend>
+            <legend class="mt-4 h6">
+              When faced with a challenge I tend to:
+            </legend>
+            <div>
+              <label class="radio">
+                <input value="1" name='Q51' type="radio" />
+                 Act quickly and face the challenge head on
+              </label>
+            </div>
+            <div>
+              <label class="radio">
+                <input value="0" name='Q51' type="radio" />
+                 Carefully analyze the situation then act
+              </label>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I thrive under pressure.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q52" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q52" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q52" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q52" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q52" value="3" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I am unable to perform under pressure.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q53" value="3" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q53" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q53" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q53" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q53" value="0" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I am an overthinker and will obsess over small details.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q54" value="3" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q54" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q54" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q54" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q54" value="0" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I am a doer and will sometimes jump without thinking.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q55" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q55" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q55" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q55" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q55" value="3" type="radio" />
+              </div>
+            </div>
+            <legend class="mt-4 h6">
+              To what degree do you agree with this statement: I am easily stressed.
+            </legend>
+            <div class="row">
+              <div class="col-sm-2">
+                  <label class="radio-inline">Not at all</label>
+                  <input class="d-block" name="Q56" value="3" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                  <label class="radio-inline">
+                     Not Much
+                  </label>
+                  <input class="d-block" name="Q56" value="2" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Neutral
+                </label>
+                <input class="d-block" name="Q56" value="1" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                   Somewhat
+                </label>
+                <input class="d-block" name="Q56" value="0" type="radio" />
+              </div>
+              <div class="col-sm-2">
+                <label class="radio-inline">
+                    Very much
+                </label>
+                <input class="d-block" name="Q56" value="0" type="radio" />
+              </div>
+            </div>
+          </form>
+          <button class="btn btn-primary question-submit" data-toggle="collapse" data-target="#collapseQ5" 
+          aria-expanded="false" aria-controls="collapseQ5" id='stress-submit'>Submit
+          </button>
+        </div>
+        <div class="collapse question-collapse" id="collapseQ5">
+          <div class="container card card-body question-card">
+            You selected x, y, and z. SNPs a, b, and c have been linked to d, e, and f phenotypes. <br \>
+            Check out these articles for more information!
+          </div>
+        </div>
+      </div>
+
 
     </div>  
 

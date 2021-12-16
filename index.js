@@ -1,3 +1,5 @@
+var SNP_LIST = null;
+
 const resize_ob = new ResizeObserver(function(entries) {
     document.getElementById('background').style.height = document.body.offsetHeight + 'px';
     document.getElementById('footer-cover').style.height = document.body.offsetHeight + 'px';
@@ -39,7 +41,6 @@ const goToNextQuestion = () => {
         }
     });
     scrollToID(next.id);
-    // highlightDiv(next.parentElement);
 }
 
 const indexOfMax = (arr) => {
@@ -60,13 +61,85 @@ const indexOfMax = (arr) => {
     return maxIndex;
 }
 
+const parseGenotype = (genotype) => {
+    return genotype.split('/').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+}
+
+const parseSNPs = (snps) => {
+    SNP_LIST = snps.map(snp => {
+        return {
+            'id': snp[0],
+            'genotype': parseGenotype(snp[3])
+        }
+    });
+    console.log(SNP_LIST)
+}
+
 const vcfinput = document.getElementById('vcfUpload')
-vcfinput.onchange = (event) => {
+vcfinput.onchange = async (event) => {
+    const infoel = document.getElementById('result-info');
+    infoel.innerText = "Preparing your results..."
     const fileList = vcfinput.files;
-    console.log(fileList) 
+    const results = await fetch('http://127.0.0.1:5000/api/parsevcf',
+        {
+                method:'POST',
+                body: fileList[0]
+        }
+    )
+    const snps = await results.json()
+    infoel.innerText = "Your results are ready! Proceed to the quiz"
+    parseSNPs(snps);
+
  }
 
  Array.from(document.querySelectorAll('.question-wrapper')).forEach(q => {
      q.onmouseenter = (q) => {focusDiv(q.srcElement)};
      q.onmouseleave = (q) => {unfocusDiv(q.srcElement)};
  })
+
+ document.getElementById('athletic-submit').onclick = (event) => {
+    const formEl = document.forms['athletic-form'];
+    const formData = new FormData(formEl);
+    const subQs = ['Q11', 'Q12', 'Q13', 'Q14', 'Q15', 'Q16']
+    const score = subQs.map(q => formData.getAll(q))
+                       .flat(Infinity)
+                       .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+
+ }
+
+ document.getElementById('social-submit').onclick = (event) => {
+    const formEl = document.forms['social-form'];
+    const formData = new FormData(formEl);
+    const subQs = ['Q21', 'Q22', 'Q23', 'Q24', 'Q25', 'Q26', 'Q27']
+    const score = subQs.map(q => formData.getAll(q))
+                       .flat(Infinity)
+                       .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+ }
+
+ document.getElementById('time-submit').onclick = (event) => {
+    const formEl = document.forms['time-form'];
+    const formData = new FormData(formEl);
+    const subQs = ['Q31', 'Q32', 'Q33', 'Q34', 'Q35']
+    const score = subQs.map(q => formData.getAll(q))
+                       .flat(Infinity)
+                       .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+ }
+
+ document.getElementById('problem-submit').onclick = (event) => {
+    const formEl = document.forms['problem-form'];
+    const formData = new FormData(formEl);
+    const subQs = ['Q41', 'Q42', 'Q43', 'Q44', 'Q45', 'Q46', 'Q47']
+    const score = subQs.map(q => formData.getAll(q))
+                       .flat(Infinity)
+                       .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+ }
+
+ document.getElementById('stress-submit').onclick = (event) => {
+    const formEl = document.forms['stress-form'];
+    const formData = new FormData(formEl);
+    const subQs = ['Q51', 'Q52', 'Q53', 'Q54', 'Q55', 'Q56']
+    const score = subQs.map(q => formData.getAll(q))
+                       .flat(Infinity)
+                       .reduce((a, b) => parseInt(a) + parseInt(b), 0);
+    console.log(score)
+ }
