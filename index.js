@@ -16,6 +16,7 @@ const SNP_TRAIT = {
 }
 ncbi_url = "https://www.ncbi.nlm.nih.gov/snp/"
 const snpToTrait = {
+    'rs4950': 'more frequent in endurance athletes compared with the power ones',
     'rs4341': 'positively correlated with athletic performance',
     'rs12594956': 'positively correlated with athletic performance',
     'rs2306604': 'homozygous genotype negatively correlated with athletic performance',
